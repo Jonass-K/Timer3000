@@ -11,7 +11,7 @@ import SwiftUI
 struct Timer3000App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Clock(model: ClockViewModel())
         }
     }
 }

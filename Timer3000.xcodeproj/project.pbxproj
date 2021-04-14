@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD08D0F6262198B900C80B00 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D0F5262198B900C80B00 /* Clock.swift */; };
+		DD08D0F7262198B900C80B00 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D0F5262198B900C80B00 /* Clock.swift */; };
+		DD08D0FD2621B8E500C80B00 /* ClockViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D0FC2621B8E500C80B00 /* ClockViewModelProtocol.swift */; };
+		DD08D0FE2621B8E500C80B00 /* ClockViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D0FC2621B8E500C80B00 /* ClockViewModelProtocol.swift */; };
+		DD08D1032621B92E00C80B00 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D1022621B92E00C80B00 /* ClockViewModel.swift */; };
+		DD08D1042621B92E00C80B00 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D1022621B92E00C80B00 /* ClockViewModel.swift */; };
+		DD08D1102621C37100C80B00 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D10E2621C37100C80B00 /* SwiftyTimer.swift */; };
+		DD08D1112621C37100C80B00 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD08D10E2621C37100C80B00 /* SwiftyTimer.swift */; };
 		DD30B5E126090A72003EC71C /* Timer3000App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30B5CE26090A71003EC71C /* Timer3000App.swift */; };
 		DD30B5E226090A72003EC71C /* Timer3000App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30B5CE26090A71003EC71C /* Timer3000App.swift */; };
-		DD30B5E326090A72003EC71C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30B5CF26090A71003EC71C /* ContentView.swift */; };
-		DD30B5E426090A72003EC71C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD30B5CF26090A71003EC71C /* ContentView.swift */; };
 		DD30B5E526090A72003EC71C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD30B5D026090A72003EC71C /* Assets.xcassets */; };
 		DD30B5E626090A72003EC71C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD30B5D026090A72003EC71C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD08D0F5262198B900C80B00 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		DD08D0FC2621B8E500C80B00 /* ClockViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModelProtocol.swift; sourceTree = "<group>"; };
+		DD08D1022621B92E00C80B00 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
+		DD08D10E2621C37100C80B00 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimer.swift; path = ../../../SwiftyTimer/Sources/SwiftyTimer.swift; sourceTree = "<group>"; };
+		DD08D10F2621C37100C80B00 /* SwiftyTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyTimer.h; path = ../../../SwiftyTimer/Sources/SwiftyTimer.h; sourceTree = "<group>"; };
 		DD30B5CE26090A71003EC71C /* Timer3000App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer3000App.swift; sourceTree = "<group>"; };
-		DD30B5CF26090A71003EC71C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD30B5D026090A72003EC71C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD30B5D526090A72003EC71C /* Timer3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer3000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD30B5D826090A72003EC71C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +67,13 @@
 		DD30B5CD26090A71003EC71C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				DD08D10F2621C37100C80B00 /* SwiftyTimer.h */,
+				DD08D10E2621C37100C80B00 /* SwiftyTimer.swift */,
 				DD30B5CE26090A71003EC71C /* Timer3000App.swift */,
-				DD30B5CF26090A71003EC71C /* ContentView.swift */,
 				DD30B5D026090A72003EC71C /* Assets.xcassets */,
+				DD08D0F5262198B900C80B00 /* Clock.swift */,
+				DD08D0FC2621B8E500C80B00 /* ClockViewModelProtocol.swift */,
+				DD08D1022621B92E00C80B00 /* ClockViewModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -187,8 +201,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD30B5E326090A72003EC71C /* ContentView.swift in Sources */,
+				DD08D0FD2621B8E500C80B00 /* ClockViewModelProtocol.swift in Sources */,
+				DD08D0F6262198B900C80B00 /* Clock.swift in Sources */,
+				DD08D1102621C37100C80B00 /* SwiftyTimer.swift in Sources */,
 				DD30B5E126090A72003EC71C /* Timer3000App.swift in Sources */,
+				DD08D1032621B92E00C80B00 /* ClockViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,8 +213,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD30B5E426090A72003EC71C /* ContentView.swift in Sources */,
+				DD08D0FE2621B8E500C80B00 /* ClockViewModelProtocol.swift in Sources */,
+				DD08D0F7262198B900C80B00 /* Clock.swift in Sources */,
+				DD08D1112621C37100C80B00 /* SwiftyTimer.swift in Sources */,
 				DD30B5E226090A72003EC71C /* Timer3000App.swift in Sources */,
+				DD08D1042621B92E00C80B00 /* ClockViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
