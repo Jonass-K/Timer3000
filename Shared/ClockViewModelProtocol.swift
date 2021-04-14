@@ -7,18 +7,27 @@
 
 import SwiftUI
 
+enum Time_Unit {
+    case minute
+    case second
+    case hour
+}
+
 protocol ClockViewModelProtocol: ObservableObject {
     var minutes_left_double: CGFloat { get set }
+    var minutes_left_int: Int { get }
     var minutes_knob_angle: CGFloat { get }
     var minutes_total_double: CGFloat { get }
     var minutes_circle_radius: CGFloat { get }
     
     var seconds_left_double: CGFloat { get set }
+    var seconds_left_int: Int { get }
     var seconds_knob_angle: CGFloat { get }
     var seconds_total_double: CGFloat { get }
     var seconds_circle_radius: CGFloat { get }
     
     var hours_left_double: CGFloat { get set }
+    var hours_left_int: Int { get }
     var hours_knob_angle: CGFloat { get }
     var hours_total_double: CGFloat { get }
     var hours_circle_radius: CGFloat { get }
@@ -31,9 +40,7 @@ protocol ClockViewModelProtocol: ObservableObject {
     
     var speaker_image: String { get }
     
-    func minutes_slider_change(location: CGPoint)
-    func seconds_slider_change(location: CGPoint)
-    func hours_slider_change(location: CGPoint)
+    func slider_change(location: CGPoint, unit: Time_Unit)
     
     func timer_start_stop()
     
