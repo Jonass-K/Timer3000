@@ -4,7 +4,9 @@
 
 ## Installation:
 
-You can easily download the app from the newest [release](https://github.com/Jonass-K/Timer3000/releases/) and install it with a little tweak.  The problem is, apple just allows signed apps to be installed. This means that macOS adds an attribute (tag) you first need to remove, to install it.
+You can easily download the app from the newest [release](https://github.com/Jonass-K/Timer3000/releases/) and install it with a little tweak.
+
+The problem is, apple just allows signed apps to be installed. This means that macOS adds an attribute (tag) you first need to remove, to install it.
 
 ```
 cd <path_of_downloaded_folder>
