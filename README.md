@@ -10,7 +10,7 @@ The problem is, apple just allows signed apps to be installed. This means that m
 
 ```
 cd <path_of_downloaded_folder>
-xattr -d com.apple.quarantine Timer3000
+xattr -d com.apple.quarantine Timer3000.app
 ```
 
 Another way would be to just download the source code, Xcode and the build, archive and copy the app for yourself.
