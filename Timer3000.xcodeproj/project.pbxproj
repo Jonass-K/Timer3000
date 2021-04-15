@@ -21,6 +21,8 @@
 		DD08D1022621B92E00C80B00 /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		DD08D10E2621C37100C80B00 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimer.swift; path = ../../../SwiftyTimer/Sources/SwiftyTimer.swift; sourceTree = "<group>"; };
 		DD08D10F2621C37100C80B00 /* SwiftyTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyTimer.h; path = ../../../SwiftyTimer/Sources/SwiftyTimer.h; sourceTree = "<group>"; };
+		DD08D126262869C900C80B00 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DD08D12726286A7B00C80B00 /* Screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot.png; sourceTree = "<group>"; };
 		DD30B5CE26090A71003EC71C /* Timer3000App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer3000App.swift; sourceTree = "<group>"; };
 		DD30B5D026090A72003EC71C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD30B5D826090A72003EC71C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +45,8 @@
 		DD30B5C826090A71003EC71C = {
 			isa = PBXGroup;
 			children = (
+				DD08D126262869C900C80B00 /* README.md */,
+				DD08D12726286A7B00C80B00 /* Screenshot.png */,
 				DD30B5CD26090A71003EC71C /* Shared */,
 				DD30B5D726090A72003EC71C /* iOS */,
 				DD30B5DE26090A72003EC71C /* macOS */,
