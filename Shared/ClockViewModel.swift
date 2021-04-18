@@ -26,7 +26,7 @@ class ClockViewModel: ClockViewModelProtocol {
     @Published var hours_left_double: CGFloat = 0.0
     var hours_left_int: Int {
         let left = Int(round(hours_left_double))
-        return left == 60 ? 0 : left
+        return left == 24 ? 0 : left
     }
     var hours_knob_angle: CGFloat {
         ((CGFloat(hours_left_int) / hours_total_double) * (2.0 * .pi) * 180) / .pi
@@ -111,7 +111,7 @@ class ClockViewModel: ClockViewModelProtocol {
     }
     
     public func timer_start_stop() {
-        if (minutes_left_double > 0 || seconds_left_double > 0 || hours_left_double > 0) {
+        if (minutes_left_int > 0 || seconds_left_int > 0 || hours_left_int > 0) {
             paused.toggle()
         } else {
             paused = true
