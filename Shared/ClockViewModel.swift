@@ -143,12 +143,14 @@ class ClockViewModel: ClockViewModelProtocol {
                             self.paused = true
                             return
                         }
+                        speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
                         if !self.mute { synthesizer.speak(speaker_sentence) }
                         
                         self.hours_left_double -= 1
                         self.minutes_left_double = 59.0
                     } else {
                         if (self.hours_left_int == 0 && (self.minutes_left_int == 30 || self.minutes_left_int == 10)) {
+                            speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
                             if !self.mute { synthesizer.speak(speaker_sentence) }
                         }
                         self.minutes_left_double -= 1
