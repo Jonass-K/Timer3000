@@ -26,7 +26,7 @@ class ClockViewModel: ClockViewModelProtocol {
     @Published var hours_left_double: CGFloat = 0.0
     var hours_left_int: Int {
         let left = Int(round(hours_left_double))
-        return left == 60 ? 0 : left
+        return left == 24 ? 0 : left
     }
     var hours_knob_angle: CGFloat {
         ((CGFloat(hours_left_int) / hours_total_double) * (2.0 * .pi) * 180) / .pi
@@ -143,12 +143,14 @@ class ClockViewModel: ClockViewModelProtocol {
                             self.paused = true
                             return
                         }
+                        speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
                         if !self.mute { synthesizer.speak(speaker_sentence) }
                         
                         self.hours_left_double -= 1
                         self.minutes_left_double = 59.0
                     } else {
                         if (self.hours_left_int == 0 && (self.minutes_left_int == 30 || self.minutes_left_int == 10)) {
+                            speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
                             if !self.mute { synthesizer.speak(speaker_sentence) }
                         }
                         self.minutes_left_double -= 1
