@@ -39,12 +39,16 @@ protocol ClockViewModelProtocol: ObservableObject {
     var start_pause: String { get }
     
     var speaker_image: String { get }
+    var reset: String { get }
+    var reset_time: (Int, Int, Int) { get set }
     
     func slider_change(location: CGPoint, unit: Time_Unit)
     
     func timer_start_stop()
     
     func mute_unmute()
+    
+    func reset_timer()
     
     func get_defaults()
 }

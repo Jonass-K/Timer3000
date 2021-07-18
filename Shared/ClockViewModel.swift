@@ -48,6 +48,7 @@ class ClockViewModel: ClockViewModelProtocol {
     let minimum_value: CGFloat = 0.0
     let knob_radius: CGFloat = 15.0
     
+    var reset_time: (Int, Int, Int) = (0, 0, 0)
     
     
     @Published var paused: Bool = true
@@ -59,6 +60,7 @@ class ClockViewModel: ClockViewModelProtocol {
     var speaker_image: String  {
         mute ? "speaker.slash.fill" : "speaker.wave.2.fill"
     }
+    var reset: String = "gobackward"
     
     
     var the_timer = Timer()
@@ -108,23 +110,49 @@ class ClockViewModel: ClockViewModelProtocol {
                 break
             }
         }
+        self.reset_time = (hours_left_int, minutes_left_int, seconds_left_int)
+    }
+    
+    private func stopwatch_start_stop() {
+        print("test1")
+        if (!paused) {
+            Timer.every(1.second) { (timer: Timer) in
+                self.the_timer = timer
+                print("Stopwatch starts.")
+                
+                if self.seconds_left_int == 59 && self.minutes_left_int == 59 && self.hours_left_int == 23 {
+                    self.the_timer.invalidate()
+                } else if self.minutes_left_int == 59 && self.seconds_left_int == 59 {
+                    self.seconds_left_double = 0
+                    self.minutes_left_double = 0
+                    self.hours_left_double += 1
+                } else if self.seconds_left_int == 59 {
+                    self.seconds_left_double = 0
+                    self.minutes_left_double += 1
+                } else {
+                    self.seconds_left_double += 1
+                }
+            }
+        } else { self.the_timer.invalidate() }
     }
     
     public func timer_start_stop() {
-        if (minutes_left_int > 0 || seconds_left_int > 0 || hours_left_int > 0) {
-            paused.toggle()
-        } else {
-            paused = true
-            return
-        }
+        paused.toggle()
         
         request_notifications()
         
-        var speaker_sentence = build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
         let synthesizer = AVSpeechSynthesizer()
         
+        print(reset_time)
+        
+        if reset_time == (0, 0, 0) {
+            stopwatch_start_stop()
+            return
+        }
         
         if (!paused) {
+            var boolStart: Bool = true
+            
             Timer.every(1.second) { (timer: Timer) in
                 self.the_timer = timer
                 print("\(self.hours_left_int), \(self.minutes_left_int) minutes an \(self.seconds_left_int) seconds left")
@@ -135,28 +163,32 @@ class ClockViewModel: ClockViewModelProtocol {
                             self.the_timer.invalidate()
                             self.showNotification()
                             
-                            if !self.mute {
-                                speaker_sentence = self.build_sentence("Your time is up!")
+                            if !self.mute && !boolStart {
+                                let speaker_sentence = self.build_sentence("Your time is up!")
                                 synthesizer.speak(speaker_sentence)
                             }
                             
                             self.paused = true
                             return
                         }
-                        speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
-                        if !self.mute { synthesizer.speak(speaker_sentence) }
+                        if !self.mute && !boolStart {
+                            let speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
+                            synthesizer.speak(speaker_sentence)
+                        }
                         
                         self.hours_left_double -= 1
                         self.minutes_left_double = 59.0
                     } else {
-                        if (self.hours_left_int == 0 && (self.minutes_left_int == 30 || self.minutes_left_int == 10)) {
-                            speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
-                            if !self.mute { synthesizer.speak(speaker_sentence) }
+                        if !self.mute && !boolStart && self.hours_left_int == 0 && (self.minutes_left_int == 30 || self.minutes_left_int == 10) {
+                            let speaker_sentence = self.build_sentence("You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
+                            synthesizer.speak(speaker_sentence)
                         }
                         self.minutes_left_double -= 1
                     }
                     self.seconds_left_double = 59.0
                 } else { self.seconds_left_double -= 1 }
+                
+                boolStart = false
             }
         } else { self.the_timer.invalidate() }
     }
@@ -164,6 +196,14 @@ class ClockViewModel: ClockViewModelProtocol {
     public func mute_unmute() {
         mute.toggle()
         defaults.set(mute, forKey: "mute_default")
+    }
+    
+    public func reset_timer() {
+        if (!paused) { return }
+        
+        self.hours_left_double = CGFloat(self.reset_time.0)
+        self.minutes_left_double = CGFloat(self.reset_time.1)
+        self.seconds_left_double = CGFloat(self.reset_time.2)
     }
     
     public func get_defaults() {
@@ -176,7 +216,14 @@ class ClockViewModel: ClockViewModelProtocol {
     
     private func showNotification() {
         let content = UNMutableNotificationContent()
-        content.title = "Your time is up!"
+        if reset_time.0 == 0 && reset_time.1 == 0 {
+            content.title = "\(reset_time.2 == 1 ? "The second has" : "\(reset_time.2) seconds have") passed."
+        } else if reset_time.0 == 0 {
+            content.title = "\(reset_time.1 == 1 ? "The minute" : "\(reset_time.1) minutes") and \(reset_time.2) \(reset_time.2 == 1 ? "second has" : "seconds have") passed."
+        } else {
+            content.title = "\(reset_time.0 == 1 ? "The hour" : "\(reset_time.0) hours"), \(reset_time.1) \(reset_time.1 == 1 ? "minute" : "minutes") and \(reset_time.2) \(reset_time.2 == 1 ? "second has" : "seconds have") passed."
+        }
+
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = UNNotificationSound.default
@@ -198,7 +245,7 @@ class ClockViewModel: ClockViewModelProtocol {
     }
     
     private func build_sentence(_ s: String) -> AVSpeechUtterance {
-        let utterance = AVSpeechUtterance(string: "You have \(self.hours_left_int == 0 ? "\(self.minutes_left_int) minutes left." : "\(self.hours_left_int) \(self.hours_left_int == 1 ? "hour" : "hours") left.")")
+        let utterance = AVSpeechUtterance(string: s)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
         utterance.rate = 0.3
         return utterance

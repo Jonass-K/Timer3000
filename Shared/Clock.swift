@@ -36,30 +36,40 @@ struct Clock<M: ClockViewModelProtocol>: View {
             .buttonStyle(PlainButtonStyle())
             .offset(x: -300, y: -200)
             
+            Button(action: {
+                model.reset_timer()
+            }) {
+                
+                Image(systemName: model.reset)
+                    .foregroundColor(.white)
+                    .font(.bold(.largeTitle)())
+                
+            }
+            .buttonStyle(PlainButtonStyle())
+            .offset(x: -300, y: -150)
             
-            
-                Button(action: {
-                    model.timer_start_stop()
-                    print("\(model.paused)")
-                }) {
-                    ZStack {
-                        Circle()
-                            .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity: 0.4))
-                            .frame(width: model.hours_circle_radius * 2, height: model.hours_circle_radius * 2, alignment: .center)
-                            
-                        VStack {
-                            Text(String(format: "%02d:%.02d:%02d", model.hours_left_int, model.minutes_left_int, model.seconds_left_int))
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .font(.custom("SF Pro Display", size: 45))
-                            
-                            Text(model.start_pause)
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
-                                .font(.custom("SF Pro Display", size: 20))
-                        }
+            Button(action: {
+                model.timer_start_stop()
+                print("\(model.paused)")
+            }) {
+                ZStack {
+                    Circle()
+                        .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity: 0.4))
+                        .frame(width: model.hours_circle_radius * 2, height: model.hours_circle_radius * 2, alignment: .center)
+                        
+                    VStack {
+                        Text(String(format: "%02d:%.02d:%02d", model.hours_left_int, model.minutes_left_int, model.seconds_left_int))
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .font(.custom("SF Pro Display", size: 45))
+                        
+                        Text(model.start_pause)
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .font(.custom("SF Pro Display", size: 20))
                     }
-                }.buttonStyle(PlainButtonStyle())
+                }
+            }.buttonStyle(PlainButtonStyle())
             
 // MARK: Minutes Slider Circle
             
