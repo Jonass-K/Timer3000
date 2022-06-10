@@ -68,6 +68,7 @@
 		DD30B5DD26090A72003EC71C /* Timer3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer3000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD30B5DF26090A72003EC71C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD30B5E026090A72003EC71C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		DD37643C26A484D700607351 /* Timer3000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer3000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DD30B5DA26090A72003EC71C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD37643926A484D700607351 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,6 +152,7 @@
 			children = (
 				DD30B5DD26090A72003EC71C /* Timer3000.app */,
 				DD25D720269897A1002352EB /* WidgetExtension.appex */,
+				DD37643C26A484D700607351 /* Timer3000.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,6 +213,23 @@
 			productReference = DD30B5DD26090A72003EC71C /* Timer3000.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DD37643B26A484D700607351 /* Timer3000 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD37644A26A484D900607351 /* Build configuration list for PBXNativeTarget "Timer3000" */;
+			buildPhases = (
+				DD37643826A484D700607351 /* Sources */,
+				DD37643926A484D700607351 /* Frameworks */,
+				DD37643A26A484D700607351 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Timer3000;
+			productName = Timer3000;
+			productReference = DD37643C26A484D700607351 /* Timer3000.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -218,6 +244,9 @@
 					};
 					DD30B5DC26090A72003EC71C = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					DD37643B26A484D700607351 = {
+						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
 			};
@@ -236,6 +265,7 @@
 			targets = (
 				DD30B5DC26090A72003EC71C /* Timer3000 (macOS) */,
 				DD25D71F269897A1002352EB /* WidgetExtension */,
+				DD37643B26A484D700607351 /* Timer3000 */,
 			);
 		};
 /* End PBXProject section */
@@ -254,6 +284,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD30B5E626090A72003EC71C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD37643A26A484D700607351 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +316,13 @@
 				DD08D1112621C37100C80B00 /* SwiftyTimer.swift in Sources */,
 				DD30B5E226090A72003EC71C /* Timer3000App.swift in Sources */,
 				DD08D1042621B92E00C80B00 /* ClockViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD37643826A484D700607351 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +544,53 @@
 			};
 			name = Release;
 		};
+		DD37644826A484D900607351 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Timer3000/Preview Content\"";
+				DEVELOPMENT_TEAM = N7XPLA95Y2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Timer3000/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jonas.Timer3000;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD37644926A484D900607351 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Timer3000/Preview Content\"";
+				DEVELOPMENT_TEAM = N7XPLA95Y2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Timer3000/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jonas.Timer3000;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -526,6 +617,15 @@
 			buildConfigurations = (
 				DD30B5ED26090A72003EC71C /* Debug */,
 				DD30B5EE26090A72003EC71C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD37644A26A484D900607351 /* Build configuration list for PBXNativeTarget "Timer3000" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD37644826A484D900607351 /* Debug */,
+				DD37644926A484D900607351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

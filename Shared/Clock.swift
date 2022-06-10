@@ -14,7 +14,7 @@ struct Clock<M: ClockViewModelProtocol>: View {
         ZStack {
             Rectangle()
                 .fill(Color(#colorLiteral(red: 0.14166666567325592, green: 0.14166666567325592, blue: 0.14166666567325592, alpha: 1)))
-                .frame(width: 700, height: 500)
+                .frame(minWidth: 700, minHeight: 500, idealHeight: 500)
             
             Circle()
                 .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity: 0.4))
